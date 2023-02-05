@@ -1,0 +1,30 @@
+#!/bin/bash
+# change the document root and port to your own
+
+usage () {
+    echo "Usage: $0 -document_root <document_root> -port <port>"
+    exit 1
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -document_root)
+        document_root=$2
+        shift
+        ;;
+    -port)
+        port=$2
+        shift
+        ;;
+    *)
+        usage
+    esac
+    shift
+done
+
+if [[ -z $document_root || -z $port ]]; then
+    usage
+fi
+çç
+# python3 socket_server.py $document_root $port
+python3 server.py $document_root $port
